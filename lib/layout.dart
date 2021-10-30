@@ -2,7 +2,54 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 Widget mainWidget() {
-  return gridView();
+  return materialCard();
+}
+
+Widget materialCard() {
+  return SizedBox(
+    height: 240,
+    child: Card(
+      child: Column(
+        children: const [
+          ListTile(
+            title: Text(
+              'Danke fürs Zusehen :)',
+              style: TextStyle(fontWeight: FontWeight.w500),
+            ),
+            subtitle: Text('Lasst eine positive Berwertung hier'),
+            leading: Icon(
+              Icons.star_rate,
+              color: Colors.blue,
+            ),
+          ),
+          Divider(),
+          ListTile(
+            title: Text(
+              'Danke fürs Zusehen :)',
+              style: TextStyle(fontWeight: FontWeight.w500),
+            ),
+            subtitle: Text('Lasst eine positive Berwertung hier'),
+            leading: Icon(
+              Icons.star_rate,
+              color: Colors.blue,
+            ),
+          ),
+          Divider(),
+          ListTile(
+            title: Text(
+              'Danke fürs Zusehen :)',
+              style: TextStyle(fontWeight: FontWeight.w500),
+            ),
+            subtitle: Text('Lasst eine positive Berwertung hier'),
+            leading: Icon(
+              Icons.star_rate,
+              color: Colors.blue,
+            ),
+          ),
+        ],
+      ),
+    ),
+  );
 }
 
 Widget gridView() {
@@ -23,7 +70,7 @@ List<Widget> _buildGridList(int i) => List.generate(
             radius: 150,
           ),
           Container(
-            padding: const EdgeInsets.all(4),
+              padding: const EdgeInsets.all(4),
               decoration: const BoxDecoration(
                 color: Colors.black38,
               ),
