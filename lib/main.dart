@@ -64,6 +64,10 @@ class _SuperHeroName extends State<SuperHeroNameGenerator> {
   Widget _buildRow(String superHeroName) {
     return ListTile(
       title: Text(superHeroName),
+      trailing: Icon(
+        Icons.favorite_border,
+        color: null,
+      ),
     );
   }
 }
