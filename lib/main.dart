@@ -62,12 +62,39 @@ class _SuperHeroName extends State<SuperHeroNameGenerator> {
   }
 
   Widget _buildRow(String superHeroName) {
+    final _markedFav = _hearted.contains(superHeroName);
     return ListTile(
       title: Text(superHeroName),
       trailing: Icon(
-        Icons.favorite_border,
-        color: null,
+        _markedFav ? Icons.favorite : Icons.favorite_border,
+        color: _markedFav ? Colors.red : null,
       ),
+      onTap: () {
+        setState(() {
+          _markedFav
+              ? _hearted.remove(superHeroName)
+              : _hearted.add(superHeroName);
+        });
+      },
+      onLongPress: () {
+        _pushExample(superHeroName);
+      },
     );
+  }
+
+  void _pushExample(String superHeroName) {
+    Navigator.of(context)
+        .push(MaterialPageRoute<void>(builder: (BuildContext context) {
+      return StatefulBuilder(
+          builder: (BuildContext context, StateSetter setState) {
+        final _superHeroName = superHeroName;
+        return Scaffold(
+          appBar: AppBar(
+            title: Text(_superHeroName),
+          ),
+          body: Center(child: Image.network('https://picsum.photos/400/600')),
+        );
+      });
+    }));
   }
 }
