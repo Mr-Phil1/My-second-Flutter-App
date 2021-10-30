@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+
+import './networking.dart';
 
 Widget mainWidget() {
   return materialCard();
@@ -10,7 +13,7 @@ Widget materialCard() {
     height: 240,
     child: Card(
       child: Column(
-        children: const [
+        children: [
           ListTile(
             title: Text(
               'Danke fürs Zusehen :)',
@@ -28,19 +31,7 @@ Widget materialCard() {
               'Danke fürs Zusehen :)',
               style: TextStyle(fontWeight: FontWeight.w500),
             ),
-            subtitle: Text('Lasst eine positive Berwertung hier'),
-            leading: Icon(
-              Icons.star_rate,
-              color: Colors.blue,
-            ),
-          ),
-          Divider(),
-          ListTile(
-            title: Text(
-              'Danke fürs Zusehen :)',
-              style: TextStyle(fontWeight: FontWeight.w500),
-            ),
-            subtitle: Text('Lasst eine positive Berwertung hier'),
+            subtitle: buildBitcoinPrice(),
             leading: Icon(
               Icons.star_rate,
               color: Colors.blue,
@@ -51,6 +42,8 @@ Widget materialCard() {
     ),
   );
 }
+
+
 
 Widget gridView() {
   return GridView.extent(
