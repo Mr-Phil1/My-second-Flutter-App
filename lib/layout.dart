@@ -2,11 +2,40 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 Widget mainWidget() {
-  return Row(children: [
-    container(),
-    container(),
-  ]);
+  return gridView();
 }
+
+Widget gridView() {
+  return GridView.extent(
+    maxCrossAxisExtent: 150,
+    padding: const EdgeInsets.all(4),
+    mainAxisSpacing: 4,
+    crossAxisSpacing: 4,
+    children: _buildGridList(50),
+  );
+}
+
+List<Widget> _buildGridList(int i) => List.generate(
+    i,
+    (index) => Stack(alignment: const Alignment(0, 0.8), children: [
+          const CircleAvatar(
+            backgroundImage: NetworkImage('https://picsum.photos/150'),
+            radius: 150,
+          ),
+          Container(
+            padding: const EdgeInsets.all(4),
+              decoration: const BoxDecoration(
+                color: Colors.black38,
+              ),
+              child: const Text(
+                'Text',
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white70,
+                ),
+              ))
+        ]));
 
 Widget container() {
   return Expanded(
